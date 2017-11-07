@@ -1,21 +1,13 @@
 # BungieApi
 
-**TODO: Add description**
+## Configuration
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bungie_api` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:bungie_api, "~> 0.1.0"}
-  ]
-end
+Add to your `config/config.exs:`
+```
+config :bungie_api, api_key: System.get_env("API_KEY") || "your_api_key"
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/bungie_api](https://hexdocs.pm/bungie_api).
-
+## Usage
+```ex
+BungieApi.Users.search "test"
+```
