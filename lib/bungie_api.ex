@@ -11,19 +11,23 @@ defmodule BungieApi do
 
   @api_url "https://www.bungie.net/Platform"
 
-  defp authenticated_headers(headers \\ %{}) do
+  defp authenticated_headers(headers) do
     Map.put(headers, "X-API-Key", Application.get_env(:bungie_api, :api_key))
   end
 
-  defp merge_options(options \\ []) do
+  defp merge_options(options) do
     Keyword.merge(@httpoison_opts, options)
+  end
+
+  def request(method, endpoint) do
+    request(method, endpoint, "", %{}, [])
   end
 
   def request(method, endpoint, options) do
     request(method, endpoint, "", %{}, options)
   end
 
-  def request(method, endpoint, body \\ "", headers \\ %{}, options \\ []) do
+  def request(method, endpoint, body, headers, options) do
     hd = authenticated_headers(headers)
     ops = merge_options(options)
     {:ok, response} = HTTPoison.request(method, "#{@api_url}#{endpoint}", body, hd, ops)
