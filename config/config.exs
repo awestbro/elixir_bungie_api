@@ -6,5 +6,5 @@ use Mix.Config
 config :bungie_api, api_key: System.get_env("BUNGIE_API_KEY")
 
 unless Application.get_env(:bungie_api, :api_key) do
-    import_config "secrets.exs"
+  import_config "secrets.exs"
 end
