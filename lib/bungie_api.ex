@@ -30,6 +30,7 @@ defmodule BungieApi do
   def request(method, endpoint, body, headers, options) do
     hd = authenticated_headers(headers)
     ops = merge_options(options)
+    IO.puts("Requesting: #{@api_url}#{endpoint}")
     {:ok, response} = HTTPoison.request(method, "#{@api_url}#{endpoint}", body, hd, ops)
     Map.get(response, :body)
     |> Poison.decode!
