@@ -21,3 +21,6 @@ erl_crash.dump
 
 # Ignore secrets config
 config/secrets.exs
+
+# Ignore Language Server output
+/.elixir_ls

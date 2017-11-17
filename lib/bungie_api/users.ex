@@ -5,6 +5,7 @@ defmodule BungieApi.Users do
 
   def search(search_text) do
     request(:get, "#{@endpoint}/SearchUsers/", params: %{q: search_text})
+    |> Poison.decode!(as: %Response{Response: [%User.GeneralUser{}]})
   end
 
   def get_memberships_by_id(membershipId, membershipType) do

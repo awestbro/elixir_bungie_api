@@ -33,6 +33,6 @@ defmodule BungieApi do
     IO.puts("Requesting: #{@api_url}#{endpoint}")
     {:ok, response} = HTTPoison.request(method, "#{@api_url}#{endpoint}", body, hd, ops)
     Map.get(response, :body)
-    |> Poison.decode!
+    # |> Poison.decode!
   end
 end
